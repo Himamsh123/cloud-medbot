@@ -1,6 +1,6 @@
 Flask==3.0.1
 gunicorn==21.2.0
-﻿absl-py==1.4.0
+absl-py==1.4.0
 astunparse==1.6.3
 blinker==1.6.2
 cachetools==5.3.1
