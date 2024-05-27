@@ -115,7 +115,7 @@ def chat_interface(chat_messages):
     if st.button('Clear chat'):
         st.session_state["chat_messages"] = []
 
-   display_chat(chat_messages)
+    display_chat(chat_messages)
 
 if __name__ == '__main__':
     st.title("MedIQ ChatBot")
