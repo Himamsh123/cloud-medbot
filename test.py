@@ -59,8 +59,8 @@ def get_response(user_input):
     for i in data['intents']:
         if i['tags'][0] == tag:
             return {'response': i['answer'], 'score': str(probability)}
-        else:
-            return {'response' : "sorry i cant" , 'score':str(0.75)}
+        # else:
+            # return {'response' : "sorry i cant" , 'score':str(0.75)}
 
 # Streamlit interface
 if "chat_messages" not in st.session_state:
