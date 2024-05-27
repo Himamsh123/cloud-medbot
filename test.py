@@ -60,6 +60,9 @@ def get_response(user_input):
     for i in data['intents']:
         if i['tags'][0] == tag:
             is_available=True
+            break
+        else:
+            is_available=False
     if is_available :
         return {'response': i['answer'], 'score': str(probability)}
     else:
