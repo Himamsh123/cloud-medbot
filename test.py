@@ -100,6 +100,7 @@ def chat_interface(chat_messages):
             response = get_response(user_input)
             bot_response = response['response']
             bot_score = float(response['score'])
+            st.session_state.query=''
 
             if bot_score > 0.72:
                 chat_messages.append(('user', user_input))
