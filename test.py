@@ -17,7 +17,7 @@ with open("intents.json") as file:
     data = json.load(file)
 
 # Load trained model
-model = keras.models.load_model('chat_model')
+model = keras.models.load_model('chat_model_2')
 
 # Load tokenizer object
 with open('tokenizer.pickle', 'rb') as handle:
@@ -53,7 +53,7 @@ def get_response(user_input):
     sequence = tokenizer.texts_to_sequences([preprocessed_input])
     padded_sequence = keras.preprocessing.sequence.pad_sequences(sequence, truncating='post', maxlen=max_len)
     result = model.predict(padded_sequence)
-    tag = lbl_encoder.inverse_transform([np.argmax(result)])
+    tag = lbl_encoder.inverse_transform([np.argmax(result)])[0]
     probability = np.max(result)
 
     for i in data['intents']:
