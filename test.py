@@ -49,6 +49,7 @@ def preprocess_text(text):
     return ' '.join(words)
 
 def get_response(user_input):
+    is_available=False
     preprocessed_input = preprocess_text(user_input)
     sequence = tokenizer.texts_to_sequences([preprocessed_input])
     padded_sequence = keras.preprocessing.sequence.pad_sequences(sequence, truncating='post', maxlen=max_len)
@@ -58,9 +59,11 @@ def get_response(user_input):
 
     for i in data['intents']:
         if i['tags'][0] == tag:
-            return {'response': i['answer'], 'score': str(probability)}
-        
-    return {'response' : "sorry i cant" , 'score':str(0)}
+            is_available=True
+    if is_available :
+        return {'response': i['answer'], 'score': str(probability)}
+    else:
+        return {'response' : "sorry i cant" , 'score':str(0)}
 
 # Streamlit interface
 if "chat_messages" not in st.session_state:
