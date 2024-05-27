@@ -59,8 +59,8 @@ def get_response(user_input):
     for i in data['intents']:
         if i['tags'][0] == tag:
             return {'response': i['answer'], 'score': str(probability)}
-        # else:
-            # return {'response' : "sorry i cant" , 'score':str(0.75)}
+        else:
+            return {'response' : "sorry i cant" , 'score':str(0)}
 
 # Streamlit interface
 if "chat_messages" not in st.session_state:
@@ -106,7 +106,8 @@ def chat_interface(chat_messages):
                 chat_messages.append(('user', user_input))
                 chat_messages.append(('bot', bot_response))
             else:
-                st.error("Please be more specific in the query!")
+                chat_messages.append(('user', user_input))
+                chat_messages.append(('bot', bot_response))
         else:
             st.error("Please enter a query!")
 
